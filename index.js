@@ -8,6 +8,20 @@ const cors = require("cors");
 const helmet = require("helmet");
 const { connectDB } = require("./config/db");
 
+//==== live reload =====
+const livereload = require("livereload");
+const liveReloadServer = livereload.createServer();
+liveReloadServer.watch(path.join(__dirname, 'public'));
+
+const connectLivereload = require("connect-livereload");
+app.use(connectLivereload());
+
+liveReloadServer.server.once("connection", () => {
+  setTimeout(() => {
+    liveReloadServer.refresh("/");
+  }, 100);
+});
+
 // Middleware
 app.use(cors());
 app.use(express.json());
@@ -20,14 +34,16 @@ app.use(express.static(path.join(__dirname, 'public'))); // Serve static files f
 connectDB(MONGO_URL);
 
 // Routes
-const mainRouter = require('./routes/main'); 
+const mainRouter = require('./routes/main');
+const userRouter = require('./routes/user');
 const logger = require("./middleware/logger");
 const { notFound, errorHandler } = require("./middleware/error");
 
-app.use(logger);
 app.use('/', mainRouter);
+app.use('/user', userRouter);
 
 // Error Handling
+app.use(logger);
 app.use(notFound);
 app.use(errorHandler);
 

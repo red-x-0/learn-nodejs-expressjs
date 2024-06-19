@@ -3,8 +3,7 @@ self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('cache').then(function(cache) {
       return cache.addAll([
-        '/',
-        'icon.png'
+        'icon.png',
       ]).catch(function(error) {
         console.error('Failed to cache:', error);
       });

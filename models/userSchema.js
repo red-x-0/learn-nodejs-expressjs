@@ -3,9 +3,11 @@ const Schema = mongoose.Schema;
  
 
 const userSchema = new Schema({
-  title: String,
-  summary: String,
-  body: String,
+  uname: String,
+  gender: String,
+  age: Number,
+  country: String,
+  updatedAt: { type: Date, default: Date.now },
 });
  
 
