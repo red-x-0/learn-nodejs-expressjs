@@ -1,0 +1,27 @@
+{
+  "name": "learn-nodejs-expressjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "watch": "nodemon index.js"
+  },
+  "author": "Sief Ali",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "connect-livereload": "^0.6.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-validator": "^7.1.0",
+    "helmet": "^7.1.0",
+    "livereload": "^0.9.3",
+    "mongodb": "^6.7.0",
+    "mongoose": "^8.4.3",
+    "nodemon": "^3.1.3"
+  }
+}
